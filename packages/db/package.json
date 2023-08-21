@@ -1,0 +1,33 @@
+{
+  "name": "@acme/db",
+  "version": "0.1.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "db:generate": "pnpm with-env prisma generate",
+    "db:push": "pnpm with-env prisma db push --skip-generate",
+    "db:migrate:dev": "pnpm with-env prisma migrate dev --name $(date +%s) --skip-generate",
+    "db:migrate:create": "pnpm with-env prisma migrate dev --name $(date +%s) --create-only --skip-generate",
+    "db:migrate:deploy": "pnpm with-env prisma migrate deploy --skip-generate",
+    "db:studio": "pnpm with-env prisma studio --port 5556",
+    "with-env": "dotenv -c -e ../../.env --"
+  },
+  "dependencies": {
+    "@pothos/plugin-prisma": "3.47.0",
+    "@prisma/client": "4.12.0"
+  },
+  "devDependencies": {
+    "@pothos/core": "3.29.0",
+    "@types/cross-spawn": "6.0.2",
+    "@types/node": "18.15.11",
+    "@types/npm-which": "3.0.1",
+    "cross-spawn": "7.0.3",
+    "dotenv-cli": "7.1.0",
+    "graphql": "16.6.0",
+    "npm-which": "3.0.1",
+    "prisma": "4.12.0",
+    "typescript": "4.9.5"
+  }
+}

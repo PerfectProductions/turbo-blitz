@@ -1,0 +1,58 @@
+{
+  "name": "@acme/api",
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "dev": "pnpm with-env tsx watch src/server.ts",
+    "build": "pnpm with-env tsc && tsc-alias",
+    "start": "node dist/server.js",
+    "lint": "SKIP_ENV_VALIDATION=1 eslint \"{src,apps,libs,tests}/**/*.ts\"",
+    "lint:fix": "SKIP_ENV_VALIDATION=1 eslint \"{src,apps,libs,tests}/**/*.ts\" --fix",
+    "lint:types": "SKIP_ENV_VALIDATION=1 tsc --pretty --noEmit",
+    "lint:all": "SKIP_ENV_VALIDATION=1 pnpm run lint:fix && pnpm run lint:types",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "with-env": "dotenv -c -e ../../.env --"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "dependencies": {
+    "@acme/db": "*",
+    "@acme/guard": "*",
+    "@envelop/core": "3.0.6",
+    "@graphql-yoga/render-graphiql": "3.8.0",
+    "@pothos/core": "3.29.0",
+    "@pothos/plugin-prisma": "3.47.1",
+    "@pothos/plugin-prisma-utils": "0.8.0",
+    "@pothos/plugin-relay": "3.39.0",
+    "@pothos/plugin-scope-auth": "3.19.0",
+    "graphql": "16.6.0",
+    "graphql-scalars": "1.21.3",
+    "graphql-yoga": "3.8.0",
+    "jose": "4.13.1",
+    "zod": "3.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.11",
+    "@typescript-eslint/eslint-plugin": "5.57.0",
+    "@typescript-eslint/parser": "5.57.0",
+    "dotenv-cli": "7.1.0",
+    "eslint": "8.37.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "prettier": "2.8.7",
+    "tsc-alias": "1.8.5",
+    "tsx": "3.12.6",
+    "typescript": "4.9.5",
+    "vitest": "0.29.8"
+  },
+  "private": true
+}
